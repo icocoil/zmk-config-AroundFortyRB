@@ -21,6 +21,7 @@
         device = <&trackball>;
 
         auto-mouse-layer {
+            layers = <0 1 10>;
             input-processors = <&zip_temp_layer 10 5000>;
             process-next;
         };
