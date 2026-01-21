@@ -28,7 +28,11 @@
 
         scroller {
             layers = <6 7>;
-            input-processors = <&zip_xy_to_scroll_mapper>;
+
+            input-processors = <
+                &zip_xy_scaler 1 24
+                &zip_xy_to_scroll_mapper
+            >;
         };
     };
 };
