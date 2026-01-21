@@ -61,6 +61,11 @@
             bindings = <&mo 0>;
             key-positions = <19 20>;
         };
+
+        test {
+            bindings = <&kp A>;
+            key-positions = <10 20 31 16 17 18 19 30 32 33>;
+        };
     };
 
     macros {
