@@ -15,23 +15,6 @@
             ;
 };
 
-/ {
-    trackball_listener {
-        compatible = "zmk,input-listener";
-        device = <&trackball>;
-
-        auto-mouse-layer {
-            layers = <0 1 10>;
-            input-processors = <&zip_temp_layer 10 5000>;
-            process-next;
-        };
-    };
-};
-
-&trackball {
-    scroll-layers = <6 7>;
-};
-
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
@@ -67,6 +50,21 @@
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+
+        scroll-layers = <6 7>;
+    };
+};
+
+/ {
+    trackball_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball>;
+
+        auto-mouse-layer {
+            layers = <0 1 10>;
+            input-processors = <&zip_temp_layer 10 5000>;
+            process-next;
+        };
     };
 };
 
