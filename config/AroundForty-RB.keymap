@@ -58,7 +58,7 @@
         };
 
         scroll {
-            bindings = <&mo 5>;
+            bindings = <&mo 7>;
             key-positions = <19 20>;
         };
     };
@@ -92,7 +92,7 @@
             wait-ms = <0>;
             tap-ms = <0>;
             #binding-cells = <0>;
-            bindings = <&tog_off 8>;
+            bindings = <&tog_off 10>;
             label = "exit_AML";
         };
 
@@ -175,36 +175,54 @@
     keymap {
         compatible = "zmk,keymap";
 
-        Mac-Default_Layer {
+        Mac_Default_Layer {
             bindings = <
-&kp Q                               &kp W         &kp E             &kp R                      &kp T                              &kp Y        &kp U        &kp I              &kp O       &kp P
-&mt_exit_AML_on_tap LEFT_COMMAND A  &kp S         &kp D             &kp F                      &kp G                              &kp H        &kp J        &kp K              &kp L       &mt_exit_AML_on_tap RIGHT_COMMAND MINUS
-&mt_exit_AML_on_tap LEFT_SHIFT Z    &kp X         &kp C             &kp V                      &kp B        &kp LG(LS(NUMBER_4))  &kp N        &kp M        &kp COMMA          &kp PERIOD  &mt_exit_AML_on_tap RIGHT_SHIFT SLASH
-&kp LCTRL                           &kp LEFT_ALT  &kp LEFT_COMMAND  &mt LEFT_SHIFT LANGUAGE_2  &lt 2 SPACE  &lt 6 LANGUAGE_1      &lt 4 ENTER  &kp AT_SIGN  &backspace_delete  &lt 7 HASH  &kp DELETE
+&kp Q                               &kp W         &kp E             &kp R             &kp T                          &kp Y        &kp U        &kp I              &kp O        &kp P
+&mt_exit_AML_on_tap LEFT_COMMAND A  &kp S         &kp D             &kp F             &kp G                          &kp H        &kp J        &kp K              &kp L        &mt_exit_AML_on_tap RIGHT_COMMAND MINUS
+&mt_exit_AML_on_tap LEFT_SHIFT Z    &kp X         &kp C             &kp V             &kp B        &kp TAB           &kp N        &kp M        &kp COMMA          &kp PERIOD   &mt_exit_AML_on_tap RIGHT_SHIFT SLASH
+&kp LCTRL                           &kp LEFT_ALT  &kp LEFT_COMMAND  &lt 2 LANGUAGE_2  &lt 4 SPACE  &lt 6 LANGUAGE_1  &lt 8 ENTER  &kp AT_SIGN  &backspace_delete  &lt 11 HASH  &kp DELETE
             >;
         };
 
-        Win-Default_Layer {
+        Win_Default_Layer {
             bindings = <
-&kp Q             &kp W         &kp E         &kp R                      &kp T                          &kp Y        &kp U        &kp I          &kp O       &kp P
-&kp A             &kp S         &kp D         &kp F                      &kp G                          &kp H        &kp J        &kp K          &kp L       &kp MINUS
-&mt LEFT_SHIFT Z  &kp X         &kp C         &kp V                      &kp B        &kp LG(LS(S))     &kp N        &kp M        &kp COMMA      &kp PERIOD  &kp SLASH
-&kp LCTRL         &kp LEFT_GUI  &kp LEFT_ALT  &mt LEFT_SHIFT LANGUAGE_1  &lt 3 SPACE  &lt 6 LANGUAGE_2  &lt 5 ENTER  &kp AT_SIGN  &kp BACKSPACE  &lt 7 HASH  &kp DELETE
+&kp Q             &kp W         &kp E         &kp R             &kp T                          &kp Y        &kp U        &kp I              &kp O        &kp P
+&kp A             &kp S         &kp D         &kp F             &kp G                          &kp H        &kp J        &kp K              &kp L        &minus_under LEFT_CONTROL 0
+&mt LEFT_SHIFT Z  &kp X         &kp C         &kp V             &kp B        &kp TAB           &kp N        &kp M        &kp COMMA          &kp PERIOD   &mt_exit_AML_on_tap RIGHT_SHIFT SLASH
+&kp LCTRL         &kp LEFT_GUI  &kp LEFT_ALT  &lt 3 LANGUAGE_1  &lt 5 SPACE  &lt 7 LANGUAGE_2  &lt 9 ENTER  &kp AT_SIGN  &backspace_delete  &lt 11 HASH  &kp DELETE
             >;
         };
 
-        Mac-Symbol_Layer {
+        Mac_Num_Layer {
             bindings = <
-&kp LG(A)  &kp LG(X)     &kp LG(C)    &kp LG(V)  &kp LG(F)          &kp LESS_THAN         &kp GREATER_THAN       &kp CARET        &kp PERCENT    &kp DOLLAR
-&kp TAB    &kp LEFT_GUI  &kp LS(TAB)  &mkp MB1   &mkp MB2           &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT_SIGN      &kp AMPERSAND  &kp DOUBLE_QUOTES
-&trans     &trans        &trans       &trans     &mkp MB3   &trans  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp EXCLAMATION  &kp QUESTION   &kp SQT
-&trans     &trans        &trans       &trans     &trans     &trans  &kp ENTER             &kp COLON              &kp BACKSPACE    &kp BACKSLASH  &kp HASH
+&kp F1   &kp F2   &kp F3  &kp F4  &kp F5           &kp PLUS      &kp MINUS   &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9
+&kp F6   &kp F7   &kp F8  &kp F9  &kp F10          &kp EQUAL     &kp COLON   &kp N4         &kp N5         &kp N6
+&kp F11  &kp F12  &trans  &trans  &trans   &trans  &kp ASTERISK  &kp SLASH   &kp NUMBER_1   &kp NUMBER_2   &kp NUMBER_3
+&trans   &trans   &trans  &trans  &trans   &trans  &kp ENTER     &kp DOLLAR  &kp BACKSPACE  &kp AMPERSAND  &kp N0
+            >;
+        };
+
+        Win_Num_Layer {
+            bindings = <
+&kp F1   &kp F2   &kp F3  &kp F4  &kp F5           &kp PLUS      &kp MINUS   &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9
+&kp F6   &kp F7   &kp F8  &kp F9  &kp F10          &kp EQUAL     &kp COLON   &kp N4         &kp N5         &kp N6
+&kp F11  &kp F12  &trans  &trans  &trans   &trans  &kp ASTERISK  &kp SLASH   &kp NUMBER_1   &kp NUMBER_2   &kp NUMBER_3
+&trans   &trans   &trans  &trans  &trans   &trans  &kp ENTER     &kp DOLLAR  &kp BACKSPACE  &kp AMPERSAND  &kp N0
+            >;
+        };
+
+        Mac_Symbol_Layer {
+            bindings = <
+&kp ESCAPE  &kp LG(X)     &kp LG(C)    &kp LG(V)  &kp LG(F)          &kp LESS_THAN         &kp GREATER_THAN       &kp CARET        &kp PERCENT    &kp DOLLAR
+&kp TAB     &kp LEFT_GUI  &kp LS(TAB)  &mkp MB1   &mkp MB2           &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT_SIGN      &kp AMPERSAND  &kp DOUBLE_QUOTES
+&trans      &trans        &trans       &trans     &mkp MB3   &trans  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp EXCLAMATION  &kp QUESTION   &kp SQT
+&trans      &trans        &trans       &trans     &trans     &trans  &kp ENTER             &kp COLON              &kp BACKSPACE    &kp BACKSLASH  &kp HASH
             >;
 
             sensor-bindings = <&scroll_up_down>;
         };
 
-        Win-Symbol_Layer {
+        Win_Symbol_Layer {
             bindings = <
 &kp LC(A)  &kp LC(X)     &kp LC(C)    &kp LC(V)  &kp LC(LS(V))          &kp LESS_THAN         &kp GREATER_THAN       &kp CARET        &kp PERCENT    &kp DOLLAR
 &kp TAB    &kp LEFT_ALT  &kp LS(TAB)  &mkp MB1   &mkp MB2               &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT_SIGN      &kp AMPERSAND  &kp DOUBLE_QUOTES
@@ -215,7 +233,7 @@
             sensor-bindings = <&scroll_up_down>;
         };
 
-        Mac-Common_Layer {
+        Mac_Common_Layer {
             bindings = <
 &kp ESCAPE      &trans        &trans       &kp LG(UP_ARROW)    &trans                       &kp LG(W)        &kp LG(LEFT_ARROW)  &mkp MB3        &kp LG(RIGHT_ARROW)  &kp HOME
 &kp TAB         &kp LEFT_GUI  &kp LS(TAB)  &kp LG(LEFT_ARROW)  &kp LG(RIGHT_ARROW)          &kp LG(TAB)      &mkp MB1            &kp UP_ARROW    &mkp MB2             &kp PAGE_UP
@@ -226,7 +244,7 @@
             sensor-bindings = <&scroll_up_down>;
         };
 
-        Win-Common_Layer {
+        Win_Common_Layer {
             bindings = <
 &kp ESCAPE      &trans        &trans       &kp LG(UP_ARROW)    &trans                       &kp LC(W)          &kp LA(LEFT_ARROW)  &mkp MB3        &kp LA(RIGHT_ARROW)  &kp HOME
 &kp TAB         &kp LEFT_GUI  &kp LS(TAB)  &kp LG(LEFT_ARROW)  &kp LG(RIGHT_ARROW)          &kp LC(PAGE_UP)    &mkp MB1            &kp UP_ARROW    &mkp MB2             &kp PAGE_UP
@@ -237,12 +255,30 @@
             sensor-bindings = <&scroll_up_down>;
         };
 
-        Num_Layer {
+        Mac_Arrow_Layer {
             bindings = <
-&kp F1   &kp F2   &kp F3  &kp F4  &kp F5           &kp PLUS      &kp MINUS   &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9
-&kp F6   &kp F7   &kp F8  &kp F9  &kp F10          &kp EQUAL     &kp COLON   &kp N4         &kp N5         &kp N6
-&kp F11  &kp F12  &trans  &trans  &trans   &trans  &kp ASTERISK  &kp SLASH   &kp NUMBER_1   &kp NUMBER_2   &kp NUMBER_3
-&trans   &trans   &trans  &trans  &trans   &trans  &kp ENTER     &kp DOLLAR  &kp BACKSPACE  &kp AMPERSAND  &kp N0
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        Win_Arrow_Layer {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        AutoMouse_Layer {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans          &trans  &trans    &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans          &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
             >;
         };
 
@@ -255,15 +291,6 @@
             >;
 
             sensor-bindings = <&scroll_up_down>;
-        };
-
-        AutoMouse_Layer {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans          &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans          &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
-            >;
         };
     };
 };
