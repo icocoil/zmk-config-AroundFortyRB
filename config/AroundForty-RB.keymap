@@ -64,7 +64,17 @@
 
         test {
             bindings = <&kp A>;
-            key-positions = <10 20 31 16 17 18 19 30 32 33>;
+            key-positions = <16 17 18 19 30>;
+        };
+
+        test2 {
+            bindings = <&kp B>;
+            key-positions = <10 12>;
+        };
+
+        test3 {
+            bindings = <&kp C>;
+            key-positions = <20 31 32 33>;
         };
     };
 
