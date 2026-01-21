@@ -44,22 +44,22 @@
 
         tab {
             bindings = <&kp TAB>;
-            key-positions = <10 11>;
+            key-positions = <11 12>;
         };
 
         shift+tab {
             bindings = <&kp LS(TAB)>;
-            key-positions = <19 18>;
+            key-positions = <12 13>;
         };
 
         escape {
             bindings = <&kp ESCAPE>;
-            key-positions = <0 1>;
+            key-positions = <10 11>;
         };
 
         scroll {
-            bindings = <&mo 0>;
-            key-positions = <19 20>;
+            bindings = <&mo 7>;
+            key-positions = <17 18>;
         };
     };
 
@@ -92,7 +92,7 @@
             wait-ms = <0>;
             tap-ms = <0>;
             #binding-cells = <0>;
-            bindings = <&tog_off 10>;
+            bindings = <&tog_off 2>;
             label = "exit_AML";
         };
 
@@ -180,16 +180,25 @@
 &kp Q                               &kp W         &kp E             &kp R             &kp T                          &kp Y        &kp U        &kp I              &kp O        &kp P
 &mt_exit_AML_on_tap LEFT_COMMAND A  &kp S         &kp D             &kp F             &kp G                          &kp H        &kp J        &kp K              &kp L        &mt_exit_AML_on_tap RIGHT_COMMAND MINUS
 &mt_exit_AML_on_tap LEFT_SHIFT Z    &kp X         &kp C             &kp V             &kp B        &kp TAB           &kp N        &kp M        &kp COMMA          &kp PERIOD   &mt_exit_AML_on_tap RIGHT_SHIFT SLASH
-&kp LCTRL                           &kp LEFT_ALT  &kp LEFT_COMMAND  &lt 2 LANGUAGE_2  &lt 4 SPACE  &lt 6 LANGUAGE_1  &lt 8 ENTER  &kp AT_SIGN  &backspace_delete  &lt 11 HASH  &kp DELETE
+&kp LCTRL                           &kp LEFT_ALT  &kp LEFT_COMMAND  &lt 3 LANGUAGE_2  &lt 5 SPACE  &lt 7 LANGUAGE_1  &lt 9 ENTER  &kp AT_SIGN  &backspace_delete  &lt 11 HASH  &kp DELETE
             >;
         };
 
         Win_Default_Layer {
             bindings = <
-&kp Q             &kp W         &kp E         &kp R             &kp T                          &kp Y        &kp U        &kp I              &kp O        &kp P
-&kp A             &kp S         &kp D         &kp F             &kp G                          &kp H        &kp J        &kp K              &kp L        &minus_under LEFT_CONTROL 0
-&mt LEFT_SHIFT Z  &kp X         &kp C         &kp V             &kp B        &kp TAB           &kp N        &kp M        &kp COMMA          &kp PERIOD   &mt_exit_AML_on_tap RIGHT_SHIFT SLASH
-&kp LCTRL         &kp LEFT_GUI  &kp LEFT_ALT  &lt 3 LANGUAGE_1  &lt 5 SPACE  &lt 7 LANGUAGE_2  &lt 9 ENTER  &kp AT_SIGN  &backspace_delete  &lt 11 HASH  &kp DELETE
+&kp Q             &kp W         &kp E         &kp R             &kp T                          &kp Y         &kp U        &kp I              &kp O        &kp P
+&kp A             &kp S         &kp D         &kp F             &kp G                          &kp H         &kp J        &kp K              &kp L        &minus_under LEFT_CONTROL 0
+&mt LEFT_SHIFT Z  &kp X         &kp C         &kp V             &kp B        &kp TAB           &kp N         &kp M        &kp COMMA          &kp PERIOD   &mt_exit_AML_on_tap RIGHT_SHIFT SLASH
+&kp LCTRL         &kp LEFT_GUI  &kp LEFT_ALT  &lt 4 LANGUAGE_1  &lt 6 SPACE  &lt 8 LANGUAGE_2  &lt 10 ENTER  &kp AT_SIGN  &backspace_delete  &lt 11 HASH  &kp DELETE
+            >;
+        };
+
+        AutoMouse_Layer {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans          &trans  &trans    &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans          &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
             >;
         };
 
@@ -270,15 +279,6 @@
 &kp TAB         &trans        &trans            &trans        &trans                    &kp HOME  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp END
 &kp LEFT_SHIFT  &trans        &trans            &trans        &trans            &trans  &trans    &trans          &trans          &trans           &trans
 &kp LCTRL       &kp LEFT_ALT  &kp LEFT_COMMAND  &kp LEFT_ALT  &kp LEFT_COMMAND  &trans  &trans    &trans          &trans          &trans           &trans
-            >;
-        };
-
-        AutoMouse_Layer {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans          &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans          &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
             >;
         };
 
