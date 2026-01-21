@@ -19,7 +19,16 @@
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
-        input-processors = <&zip_temp_layer 10 5000>;
+
+        auto-mouse-layer {
+            input-processors = <&zip_temp_layer 10 5000>;
+            process-next;
+        };
+
+        scroller {
+            layers = <6 7>;
+            input-processors = <&zip_xy_to_scroll_mapper>;
+        };
     };
 };
 
