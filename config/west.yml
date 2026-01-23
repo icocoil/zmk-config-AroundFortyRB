@@ -6,8 +6,8 @@ manifest:
       url-base: https://github.com/razilyis
     - name: caksoylar
       url-base: https://github.com/caksoylar
-    - name: te9no
-      url-base: https://github.com/te9no
+    - name: badjeff
+      url-base: https://github.com/badjeff
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -20,7 +20,7 @@ manifest:
       remote: caksoylar
       revision: main
     - name: zmk-input-processor-keybind
-      remote: te9no
+      remote: badjeff
       revision: main
   self:
     path: config
