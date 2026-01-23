@@ -61,6 +61,12 @@
             bindings = <&mo 7>;
             key-positions = <17 18>;
         };
+
+        mute {
+            bindings = <&kp K_MUTE>;
+            key-positions = <40 41>;
+            layers = <7 8>;
+        };
     };
 
     macros {
@@ -205,8 +211,8 @@
         Mac_Num_Layer {
             bindings = <
 &trans        &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &trans             &kp EQUAL      &kp F7  &kp F8     &kp F9  &kp F12
-&trans        &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp PLUS           &kp SLASH      &kp F4  &kp F5     &kp F6  &kp F11
-&kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp MINUS  &trans  &kp ASTERISK   &kp F1  &kp F2     &kp F3  &kp F10
+&trans        &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp PLUS           &kp ASTERISK   &kp F4  &kp F5     &kp F6  &kp F11
+&kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp MINUS  &trans  &kp SLASH      &kp F1  &kp F2     &kp F3  &kp F10
 &trans        &trans        &trans        &trans        &trans     &trans  &kp LG(SPACE)  &trans  &kp LA(V)  &trans  &trans
             >;
         };
@@ -240,10 +246,10 @@
 
         Mac_Common_Layer {
             bindings = <
-&trans            &trans                &kp LG(LS(T))  &trans                 &trans                      &trans                 &kp LC(LA(J))           &kp LC(LA(N))         &kp LC(LA(K))            &trans
-&kp LG(UP_ARROW)  &kp LC(LS(TAB))       &kp LG(T)      &kp LC(TAB)            &kp LG(DOWN_ARROW)          &trans                 &kp LC(LEFT_ARROW)      &kp LC(UP_ARROW)      &kp LC(RIGHT_ARROW)      &kp LC(DOWN_ARROW)
-&trans            &kp LG(LEFT_BRACKET)  &kp LG(W)      &kp LG(RIGHT_BRACKET)  &trans              &trans  &trans                 &kp LC(LA(LEFT_ARROW))  &kp LC(LA(UP_ARROW))  &kp LC(LA(RIGHT_ARROW))  &trans
-&trans            &trans                &trans         &trans                 &trans              &trans  &kp LG(RIGHT_BRACKET)  &trans                  &kp LG(LEFT_BRACKET)  &trans                   &trans
+&trans            &trans                &kp LG(LS(T))  &trans                 &trans                      &trans                 &kp LC(LA(J))           &kp LC(LA(N))         &kp LC(LA(K))              &trans
+&kp LG(UP_ARROW)  &kp LC(LS(TAB))       &kp LG(T)      &kp LC(TAB)            &kp LG(DOWN_ARROW)          &trans                 &kp LC(LEFT_ARROW)      &kp LC(UP_ARROW)      &kp LC(RIGHT_ARROW)        &kp LC(DOWN_ARROW)
+&trans            &kp LG(LEFT_BRACKET)  &kp LG(W)      &kp LG(RIGHT_BRACKET)  &trans              &trans  &trans                 &kp LC(LA(LEFT_ARROW))  &kp LC(LA(UP_ARROW))  &kp LC(LA(RIGHT_ARROW))    &trans
+&trans            &trans                &trans         &trans                 &trans              &trans  &kp LG(RIGHT_BRACKET)  &trans                  &kp LG(LEFT_BRACKET)  &kp LS(LA(C_VOLUME_DOWN))  &kp LS(LA(C_VOLUME_UP))
             >;
         };
 
@@ -252,7 +258,7 @@
 &trans            &trans                &kp LG(LS(T))  &trans                 &trans                      &trans                 &kp LC(LA(J))           &kp LC(LA(N))         &kp LC(LA(K))            &trans
 &kp LG(UP_ARROW)  &kp LC(LS(TAB))       &kp LG(T)      &kp LC(TAB)            &kp LG(DOWN_ARROW)          &trans                 &kp LC(LEFT_ARROW)      &kp LC(UP_ARROW)      &kp LC(RIGHT_ARROW)      &kp LC(DOWN_ARROW)
 &trans            &kp LG(LEFT_BRACKET)  &kp LG(W)      &kp LG(RIGHT_BRACKET)  &trans              &trans  &trans                 &kp LC(LA(LEFT_ARROW))  &kp LC(LA(UP_ARROW))  &kp LC(LA(RIGHT_ARROW))  &trans
-&trans            &trans                &trans         &trans                 &trans              &trans  &kp LG(RIGHT_BRACKET)  &trans                  &kp LG(LEFT_BRACKET)  &trans                   &trans
+&trans            &trans                &trans         &trans                 &trans              &trans  &kp LG(RIGHT_BRACKET)  &trans                  &kp LG(LEFT_BRACKET)  &kp C_VOLUME_DOWN        &kp C_VOLUME_UP
             >;
         };
 
