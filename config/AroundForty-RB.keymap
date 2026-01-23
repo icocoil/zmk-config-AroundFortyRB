@@ -186,10 +186,10 @@
 
         Win_Default_Layer {
             bindings = <
-&kp Q             &kp W         &kp E         &kp R             &kp T                          &kp Y         &kp U        &kp I              &kp O        &kp P
-&kp A             &kp S         &kp D         &kp F             &kp G                          &kp H         &kp J        &kp K              &kp L        &minus_under LEFT_CONTROL 0
-&mt LEFT_SHIFT Z  &kp X         &kp C         &kp V             &kp B        &kp TAB           &kp N         &kp M        &kp COMMA          &kp PERIOD   &mt_exit_AML_on_tap RIGHT_SHIFT SLASH
-&kp LCTRL         &kp LEFT_GUI  &kp LEFT_ALT  &lt 4 LANGUAGE_1  &lt 6 SPACE  &lt 8 LANGUAGE_2  &lt 10 ENTER  &kp AT_SIGN  &backspace_delete  &lt 11 HASH  &kp DELETE
+&kp Q               &kp W         &kp E         &kp R             &kp T                          &kp Y         &kp U        &kp I              &kp O        &kp P
+&mt LEFT_CONTROL A  &kp S         &kp D         &kp F             &kp G                          &kp H         &kp J        &kp K              &kp L        &minus_under RIGHT_CONTROL 0
+&mt LEFT_SHIFT Z    &kp X         &kp C         &kp V             &kp B        &kp TAB           &kp N         &kp M        &kp COMMA          &kp PERIOD   &mt_exit_AML_on_tap RIGHT_SHIFT SLASH
+&kp LCTRL           &kp LEFT_GUI  &kp LEFT_ALT  &lt 4 LANGUAGE_1  &lt 6 SPACE  &lt 8 LANGUAGE_2  &lt 10 ENTER  &kp AT_SIGN  &backspace_delete  &lt 11 HASH  &kp DELETE
             >;
         };
 
