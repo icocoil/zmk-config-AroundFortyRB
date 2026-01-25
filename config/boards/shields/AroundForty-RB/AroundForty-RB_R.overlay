@@ -22,15 +22,9 @@
         compatible = "zmk,input-listener";
         device = <&trackball>;
 
-        auto-mouse-layer {
-            layers = <0 1 2>;
-            input-processors = <&zip_temp_layer 2 5000>;
-        };
-
-        arrows {
-            layers = <5 6>;
-            input-processors = <&zip_keybind_keys>;
-        };
+        input-processors = <
+            &zip_temp_layer 2 5000
+        >;
     };
 };
 
