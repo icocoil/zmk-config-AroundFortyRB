@@ -57,15 +57,22 @@
             key-positions = <10 11>;
         };
 
-        scroll {
+        mac_scroll {
             bindings = <&mo 7>;
             key-positions = <17 18>;
+            layers = <0>;
         };
 
         mute {
             bindings = <&kp K_MUTE>;
             key-positions = <40 41>;
             layers = <7 8>;
+        };
+
+        win_scroll {
+            bindings = <&mo 8>;
+            key-positions = <17 18>;
+            layers = <1>;
         };
     };
 
