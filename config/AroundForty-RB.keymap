@@ -238,7 +238,7 @@
 &kp ESCAPE        &kp AMPERSAND    &kp ASTERISK      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS          &trans             &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &trans         &trans
 &kp TAB           &kp DOLLAR       &kp PERCENT       &kp CARET             &kp TILDE                      &kp SINGLE_QUOTE   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp COLON      &kp PIPE
 &kp LEFT_SHIFT    &kp EXCLAMATION  &kp AT_SIGN       &kp HASH              &kp GRAVE              &trans  &kp DOUBLE_QUOTES  &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp SEMICOLON  &kp BACKSLASH
-&kp LEFT_CONTROL  &kp LEFT_ALT     &kp LEFT_COMMAND  &trans                &trans                 &trans  &trans             &trans                &kp BACKSPACE          &trans         &trans
+&kp LEFT_CONTROL  &kp LEFT_ALT     &kp LEFT_COMMAND  &trans                &trans                 &trans  &kp ENTER          &trans                &kp BACKSPACE          &trans         &trans
             >;
         };
 
@@ -247,13 +247,13 @@
 &kp ESCAPE        &kp JP_AMPERSAND  &kp JP_ASTERISK   &kp JP_LPAREN  &kp JP_RPAREN             &trans         &kp JP_LBRACKET  &kp JP_RBRACKET  &trans         &trans
 &kp TAB           &kp DOLLAR        &kp PERCENT       &kp JP_CARET   &kp JP_TILDE              &kp JP_QUOTE   &kp JP_LPAREN    &kp JP_RPAREN    &kp JP_COLON   &kp JP_PIPE
 &kp LEFT_SHIFT    &kp EXCLAMATION   &kp JP_AT         &kp HASH       &kp JP_BACKQUOTE  &trans  &kp JP_DQUOTE  &kp JP_LBRACE    &kp JP_RBRACE    &kp SEMICOLON  &kp JP_YEN
-&kp LEFT_CONTROL  &kp LEFT_ALT      &kp LEFT_COMMAND  &trans         &trans            &trans  &trans         &trans           &kp BACKSPACE    &trans         &trans
+&kp LEFT_CONTROL  &kp LEFT_ALT      &kp LEFT_COMMAND  &trans         &trans            &trans  &kp ENTER      &trans           &kp BACKSPACE    &trans         &trans
             >;
         };
 
         Mac_Common_Layer {
             bindings = <
-&trans            &trans                &kp LG(LS(T))  &trans                 &trans                      &trans                 &kp LC(LA(J))           &kp LC(LA(N))         &kp LC(LA(K))              &trans
+&trans            &kp LG(UP_ARROW)      &kp LG(LS(T))  &kp LG(DOWN_ARROW)     &trans                      &trans                 &kp LC(LA(J))           &kp LC(LA(N))         &kp LC(LA(K))              &trans
 &kp LG(UP_ARROW)  &kp LC(LS(TAB))       &kp LG(T)      &kp LC(TAB)            &kp LG(DOWN_ARROW)          &trans                 &kp LC(LEFT_ARROW)      &kp LC(UP_ARROW)      &kp LC(RIGHT_ARROW)        &kp LC(DOWN_ARROW)
 &trans            &kp LG(LEFT_BRACKET)  &kp LG(W)      &kp LG(RIGHT_BRACKET)  &trans              &trans  &trans                 &kp LC(LA(LEFT_ARROW))  &kp LC(LA(UP_ARROW))  &kp LC(LA(RIGHT_ARROW))    &trans
 &trans            &trans                &trans         &trans                 &trans              &trans  &kp LG(RIGHT_BRACKET)  &trans                  &kp LG(LEFT_BRACKET)  &kp LS(LA(C_VOLUME_DOWN))  &kp LS(LA(C_VOLUME_UP))
@@ -262,7 +262,7 @@
 
         Win_Common_Layer {
             bindings = <
-&trans        &trans              &kp LC(LS(T))  &trans               &trans               &trans               &trans                  &trans              &trans                   &trans
+&trans        &kp LC(HOME)        &kp LC(LS(T))  &kp LC(END)          &trans               &trans               &trans                  &trans              &trans                   &trans
 &kp LC(HOME)  &kp LC(LS(TAB))     &kp LC(T)      &kp LC(TAB)          &kp LC(END)          &trans               &kp LC(LG(LEFT_ARROW))  &kp LG(TAB)         &kp LC(LG(RIGHT_ARROW))  &kp LC(LG(D))
 &trans        &kp LA(LEFT_ARROW)  &kp LC(W)      &kp LA(RIGHT_ARROW)  &trans       &trans  &trans               &kp LG(LEFT_ARROW)      &kp LG(UP_ARROW)    &kp LG(RIGHT_ARROW)      &trans
 &trans        &trans              &trans         &trans               &trans       &trans  &kp LA(RIGHT_ARROW)  &trans                  &kp LA(LEFT_ARROW)  &kp C_VOLUME_DOWN        &kp C_VOLUME_UP
@@ -271,7 +271,7 @@
 
         Mac_Arrow_Layer {
             bindings = <
-&kp ESCAPE      &trans        &trans            &trans        &trans                    &trans    &trans          &kp UP_ARROW    &trans           &trans
+&kp ESCAPE      &trans        &trans            &trans        &trans                    &trans    &kp HOME        &kp UP_ARROW    &kp END          &trans
 &kp TAB         &trans        &trans            &trans        &trans                    &kp HOME  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp END
 &kp LEFT_SHIFT  &trans        &trans            &trans        &trans            &trans  &trans    &trans          &trans          &trans           &trans
 &kp LCTRL       &kp LEFT_ALT  &kp LEFT_COMMAND  &kp LEFT_ALT  &kp LEFT_COMMAND  &trans  &trans    &trans          &trans          &trans           &trans
@@ -280,7 +280,7 @@
 
         Win_Arrow_Layer {
             bindings = <
-&kp ESCAPE      &trans            &trans        &trans            &trans                &trans    &trans          &kp UP_ARROW    &trans           &trans
+&kp ESCAPE      &trans            &trans        &trans            &trans                &trans    &kp HOME        &kp UP_ARROW    &kp END          &trans
 &kp TAB         &trans            &trans        &trans            &trans                &kp HOME  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp END
 &kp LEFT_SHIFT  &trans            &trans        &trans            &trans        &trans  &trans    &trans          &trans          &trans           &trans
 &kp LCTRL       &kp LEFT_COMMAND  &kp LEFT_ALT  &kp LEFT_COMMAND  &kp LEFT_ALT  &trans  &trans    &trans          &trans          &trans           &trans
