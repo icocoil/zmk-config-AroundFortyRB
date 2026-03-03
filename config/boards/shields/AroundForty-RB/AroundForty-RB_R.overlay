@@ -46,7 +46,7 @@
         compatible = "zmk,input-listener";
         device = <&trackball>;
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
-                           <&zip_xy_scaler 1 1>,
+                           <&zip_xy_scaler 1 1>;
 
         mac-auto-mouse-layer {
             layers = <Mac_Default_Layer Mac_AML>;
