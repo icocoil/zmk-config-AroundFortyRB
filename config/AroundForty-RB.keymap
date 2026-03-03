@@ -60,16 +60,16 @@
             layers = <0 2>;
         };
 
+        win_scroll {
+            bindings = <&mo 9>;
+            key-positions = <17 18>;
+            layers = <1 3>;
+        };
+
         mute {
             bindings = <&kp K_MUTE>;
             key-positions = <40 41>;
             layers = <8 9>;
-        };
-
-        win_scroll {
-            bindings = <&mo 8>;
-            key-positions = <17 18>;
-            layers = <1 3>;
         };
     };
 
