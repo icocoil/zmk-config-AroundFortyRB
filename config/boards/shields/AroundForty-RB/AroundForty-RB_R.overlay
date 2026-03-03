@@ -19,6 +19,14 @@
         ;
 };
 
+&zip_scroll_snap {
+    require-n-samples = <8>;
+    immediate-snap-threshold = <750>;
+    lock-duration-ms = <175>;
+    lock-for-next-n-events = <8>;
+    idle-reset-timeout-ms = <175>;
+};
+
 / {
     trackball_listener: trackball_listener {
         compatible = "zmk,input-listener";
