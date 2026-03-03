@@ -18,6 +18,13 @@
         ;
 };
 
+&zip_scroll_snap {
+    require-n-samples = <8>;
+    immediate-snap-threshold = <750>;
+    lock-duration-ms = <175>;
+    lock-for-next-n-events = <8>;
+    idle-reset-timeout-ms = <175>;
+};
 
 / {
     trackball_listener: trackball_listener {
@@ -31,7 +38,8 @@
             layers = <7 8>;
             input-processors = <&zip_xy_to_scroll_mapper>, 
                                <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-                               <&zip_scroll_scaler 1 20>;
+                               <&zip_scroll_scaler 1 20>,
+                               <&zip_scroll_snap>;
         };
     };
 };
