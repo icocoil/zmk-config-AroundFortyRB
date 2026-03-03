@@ -40,7 +40,8 @@
 
         scroll-layer {
             layers = <7 8>;
-            input-processors = <&zip_xy_to_scroll_mapper_tune>, 
+            input-processors = <&zip_xy_to_scroll_mapper>, 
+                               <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
                                <&zip_scroll_scaler 1 10>;
         };
     };
