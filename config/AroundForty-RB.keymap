@@ -54,16 +54,9 @@
             key-positions = <10 11>;
         };
 
-        mac_scroll {
+        scroll {
             bindings = <&mo 7>;
             key-positions = <17 18>;
-            layers = <0 2>;
-        };
-
-        win_scroll {
-            bindings = <&mo 8>;
-            key-positions = <17 18>;
-            layers = <1>;
         };
 
         mute {
