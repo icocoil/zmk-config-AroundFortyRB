@@ -74,7 +74,7 @@
     };
 
     new_tab {
-        pattern = <GESTURE_RIGHT GESTURE_LEFT>;
+        pattern = <GESTURE_LEFT GESTURE_RIGHT>;
         bindings = <&kp LG(T)>;
     };
 
@@ -242,7 +242,7 @@
         };
 
         new_tab {
-            pattern = <GESTURE_RIGHT GESTURE_LEFT>;
+            pattern = <GESTURE_LEFT GESTURE_RIGHT>;
             bindings = <&kp LC(T)>;
         };
 
