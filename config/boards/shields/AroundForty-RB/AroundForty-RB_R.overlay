@@ -40,11 +40,70 @@
     idle-reset-timeout-ms = <175>;
 };
 
+// Layer 0: macOS用マウスジェスチャー
+&zip_mouse_gesture {
+    stroke-size = <200>;
+    movement-threshold = <3>;
+    idle-timeout-ms = <0>;
+    suppress-movement;
+
+    page_top {
+        pattern = <GESTURE_UP>;
+        bindings = <&kp LG(UP_ARROW)>;
+    };
+
+    page_bottom {
+        pattern = <GESTURE_DOWN>;
+        bindings = <&kp LG(DOWN_ARROW)>;
+    };
+
+    history_forward {
+        pattern = <GESTURE_RIGHT>;
+        bindings = <&kp LG(RIGHT_BRACKET)>;
+    };
+
+    history_back {
+        pattern = <GESTURE_LEFT>;
+        bindings = <&kp LG(LEFT_BRACKET)>;
+    };
+};
+
 / {
+    // Layer 1: Windows用マウスジェスチャー
+    zip_mouse_gesture_win: zip_mouse_gesture_win {
+        compatible = "zmk,input-processor-mouse-gesture";
+        #input-processor-cells = <0>;
+        stroke-size = <200>;
+        movement-threshold = <3>;
+        idle-timeout-ms = <0>;
+        suppress-movement;
+
+        page_top {
+            pattern = <GESTURE_UP>;
+            bindings = <&kp LC(HOME)>;
+        };
+
+        page_bottom {
+            pattern = <GESTURE_DOWN>;
+            bindings = <&kp LC(END)>;
+        };
+
+        history_forward {
+            pattern = <GESTURE_RIGHT>;
+            bindings = <&kp LA(RIGHT_ARROW)>;
+        };
+
+        history_back {
+            pattern = <GESTURE_LEFT>;
+            bindings = <&kp LA(LEFT_ARROW)>;
+        };
+    };
+
     trackball_listener: trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
+                           <&zip_mouse_gesture>,
                            <&zip_xy_scaler 1 1>,
                            <&zip_temp_layer AML_Layer 5000>;
 
@@ -54,6 +113,14 @@
                                <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
                                <&zip_scroll_scaler 1 25>,
                                <&zip_scroll_snap>;
+        };
+
+        win-gesture-layer {
+            layers = <Win_Default_Layer>;
+            input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
+                               <&zip_mouse_gesture_win>,
+                               <&zip_xy_scaler 1 1>,
+                               <&zip_temp_layer AML_Layer 5000>;
         };
     };
 };
