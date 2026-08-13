@@ -54,9 +54,10 @@
 
 // L長押し: macOS用マウスジェスチャー
 &zip_mouse_gesture {
-    stroke-size = <200>;
+    stroke-size = <150>;
     movement-threshold = <0>;
     idle-timeout-ms = <300>;
+    gesture-cooldown-ms = <200>;
     always-active;
     enable-eager-mode;
     suppress-movement;
@@ -301,9 +302,10 @@
     zip_mouse_gesture_win: zip_mouse_gesture_win {
         compatible = "zmk,input-processor-mouse-gesture";
         #input-processor-cells = <0>;
-        stroke-size = <200>;
+        stroke-size = <150>;
         movement-threshold = <0>;
         idle-timeout-ms = <300>;
+        gesture-cooldown-ms = <200>;
         always-active;
         enable-eager-mode;
         suppress-movement;
