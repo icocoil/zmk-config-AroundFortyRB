@@ -91,6 +91,7 @@
         #input-processor-cells = <0>;
         stroke-size = <200>;
         movement-threshold = <3>;
+        always-active;
         enable-eager-mode;
         suppress-movement;
 
@@ -121,6 +122,7 @@
         #input-processor-cells = <0>;
         stroke-size = <200>;
         movement-threshold = <3>;
+        always-active;
         enable-eager-mode;
         suppress-movement;
 
@@ -152,6 +154,7 @@
         stroke-size = <150>;
         movement-threshold = <3>;
         gesture-cooldown-ms = <200>;
+        always-active;
         enable-eager-mode;
         suppress-movement;
 
@@ -183,6 +186,7 @@
         stroke-size = <150>;
         movement-threshold = <3>;
         gesture-cooldown-ms = <200>;
+        always-active;
         enable-eager-mode;
         suppress-movement;
 
