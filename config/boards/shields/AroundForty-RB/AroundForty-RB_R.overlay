@@ -45,7 +45,7 @@
 &zip_mouse_gesture {
     stroke-size = <200>;
     movement-threshold = <3>;
-    idle-timeout-ms = <0>;
+    enable-eager-mode;
     suppress-movement;
 
     page_top {
@@ -76,7 +76,7 @@
         #input-processor-cells = <0>;
         stroke-size = <200>;
         movement-threshold = <3>;
-        idle-timeout-ms = <0>;
+        enable-eager-mode;
         suppress-movement;
 
         page_top {
