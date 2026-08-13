@@ -85,70 +85,8 @@
 };
 
 / {
-    // I長押し: macOS用デスクトップ／ウィンドウジェスチャー
+    // I長押し: タブ操作（macOS）
     zip_mouse_gesture_i_mac: zip_mouse_gesture_i_mac {
-        compatible = "zmk,input-processor-mouse-gesture";
-        #input-processor-cells = <0>;
-        stroke-size = <200>;
-        movement-threshold = <3>;
-        always-active;
-        enable-eager-mode;
-        suppress-movement;
-
-        desktop_right {
-            pattern = <GESTURE_RIGHT>;
-            bindings = <&kp LC(RIGHT_ARROW)>;
-        };
-
-        desktop_left {
-            pattern = <GESTURE_LEFT>;
-            bindings = <&kp LC(LEFT_ARROW)>;
-        };
-
-        mission_control {
-            pattern = <GESTURE_UP>;
-            bindings = <&kp LC(UP_ARROW)>;
-        };
-
-        app_expose {
-            pattern = <GESTURE_DOWN>;
-            bindings = <&kp LC(DOWN_ARROW)>;
-        };
-    };
-
-    // I長押し: Windows用デスクトップ／ウィンドウジェスチャー
-    zip_mouse_gesture_i_win: zip_mouse_gesture_i_win {
-        compatible = "zmk,input-processor-mouse-gesture";
-        #input-processor-cells = <0>;
-        stroke-size = <200>;
-        movement-threshold = <3>;
-        always-active;
-        enable-eager-mode;
-        suppress-movement;
-
-        desktop_right {
-            pattern = <GESTURE_RIGHT>;
-            bindings = <&kp LC(LG(RIGHT_ARROW))>;
-        };
-
-        desktop_left {
-            pattern = <GESTURE_LEFT>;
-            bindings = <&kp LC(LG(LEFT_ARROW))>;
-        };
-
-        task_view {
-            pattern = <GESTURE_UP>;
-            bindings = <&kp LG(TAB)>;
-        };
-
-        minimize_window {
-            pattern = <GESTURE_DOWN>;
-            bindings = <&kp LG(DOWN_ARROW)>;
-        };
-    };
-
-    // O長押し: タブ操作（macOS）
-    zip_mouse_gesture_o_mac: zip_mouse_gesture_o_mac {
         compatible = "zmk,input-processor-mouse-gesture";
         #input-processor-cells = <0>;
         stroke-size = <150>;
@@ -179,8 +117,8 @@
         };
     };
 
-    // O長押し: タブ操作（Windows）
-    zip_mouse_gesture_o_win: zip_mouse_gesture_o_win {
+    // I長押し: タブ操作（Windows）
+    zip_mouse_gesture_i_win: zip_mouse_gesture_i_win {
         compatible = "zmk,input-processor-mouse-gesture";
         #input-processor-cells = <0>;
         stroke-size = <150>;
@@ -208,6 +146,68 @@
         close_tab {
             pattern = <GESTURE_DOWN>;
             bindings = <&kp LC(W)>;
+        };
+    };
+
+    // O長押し: macOS用デスクトップ／ウィンドウジェスチャー
+    zip_mouse_gesture_o_mac: zip_mouse_gesture_o_mac {
+        compatible = "zmk,input-processor-mouse-gesture";
+        #input-processor-cells = <0>;
+        stroke-size = <200>;
+        movement-threshold = <3>;
+        always-active;
+        enable-eager-mode;
+        suppress-movement;
+
+        desktop_right {
+            pattern = <GESTURE_RIGHT>;
+            bindings = <&kp LC(RIGHT_ARROW)>;
+        };
+
+        desktop_left {
+            pattern = <GESTURE_LEFT>;
+            bindings = <&kp LC(LEFT_ARROW)>;
+        };
+
+        mission_control {
+            pattern = <GESTURE_UP>;
+            bindings = <&kp LC(UP_ARROW)>;
+        };
+
+        app_expose {
+            pattern = <GESTURE_DOWN>;
+            bindings = <&kp LC(DOWN_ARROW)>;
+        };
+    };
+
+    // O長押し: Windows用デスクトップ／ウィンドウジェスチャー
+    zip_mouse_gesture_o_win: zip_mouse_gesture_o_win {
+        compatible = "zmk,input-processor-mouse-gesture";
+        #input-processor-cells = <0>;
+        stroke-size = <200>;
+        movement-threshold = <3>;
+        always-active;
+        enable-eager-mode;
+        suppress-movement;
+
+        desktop_right {
+            pattern = <GESTURE_RIGHT>;
+            bindings = <&kp LC(LG(RIGHT_ARROW))>;
+        };
+
+        desktop_left {
+            pattern = <GESTURE_LEFT>;
+            bindings = <&kp LC(LG(LEFT_ARROW))>;
+        };
+
+        task_view {
+            pattern = <GESTURE_UP>;
+            bindings = <&kp LG(TAB)>;
+        };
+
+        minimize_window {
+            pattern = <GESTURE_DOWN>;
+            bindings = <&kp LG(DOWN_ARROW)>;
         };
     };
 
