@@ -1,4 +1,5 @@
 #include "AroundForty-RB.dtsi"
+#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/input_transform.h>
 #include <input/processors.dtsi>
@@ -17,6 +18,10 @@
 #define Mac_Arrow_Layer   9
 #define Win_Arrow_Layer   10
 #define Setting_Layer     11
+#define I_Gesture_Layer   12
+#define I_Gesture_Win     13
+#define O_Gesture_Layer   14
+#define O_Gesture_Win     15
 
 &default_transform {
     col-offset = <6>;
@@ -40,11 +45,218 @@
     idle-reset-timeout-ms = <175>;
 };
 
+// Layer 0: macOS用マウスジェスチャー
+&zip_mouse_gesture {
+    stroke-size = <200>;
+    movement-threshold = <3>;
+    idle-timeout-ms = <300>;
+    enable-eager-mode;
+    suppress-movement;
+
+    page_top {
+        pattern = <GESTURE_UP>;
+        bindings = <&kp LG(UP_ARROW)>;
+    };
+
+    page_bottom {
+        pattern = <GESTURE_DOWN>;
+        bindings = <&kp LG(DOWN_ARROW)>;
+    };
+
+    history_forward {
+        pattern = <GESTURE_RIGHT>;
+        bindings = <&kp LG(RIGHT_BRACKET)>;
+    };
+
+    history_back {
+        pattern = <GESTURE_LEFT>;
+        bindings = <&kp LG(LEFT_BRACKET)>;
+    };
+
+    new_tab {
+        pattern = <GESTURE_LEFT GESTURE_RIGHT>;
+        bindings = <&kp LG(T)>;
+    };
+
+    open_history {
+        pattern = <GESTURE_DOWN GESTURE_RIGHT>;
+        bindings = <&kp LG(Y)>;
+    };
+};
+
 / {
+    // I長押し: タブ操作（macOS）
+    zip_mouse_gesture_i_mac: zip_mouse_gesture_i_mac {
+        compatible = "zmk,input-processor-mouse-gesture";
+        #input-processor-cells = <0>;
+        stroke-size = <150>;
+        movement-threshold = <3>;
+        gesture-cooldown-ms = <200>;
+        always-active;
+        enable-eager-mode;
+        suppress-movement;
+
+        next_tab {
+            pattern = <GESTURE_RIGHT>;
+            bindings = <&kp LC(TAB)>;
+        };
+
+        previous_tab {
+            pattern = <GESTURE_LEFT>;
+            bindings = <&kp LC(LS(TAB))>;
+        };
+
+        reopen_tab {
+            pattern = <GESTURE_UP>;
+            bindings = <&kp LG(LS(T))>;
+        };
+
+        close_tab {
+            pattern = <GESTURE_DOWN>;
+            bindings = <&kp LG(W)>;
+        };
+    };
+
+    // I長押し: タブ操作（Windows）
+    zip_mouse_gesture_i_win: zip_mouse_gesture_i_win {
+        compatible = "zmk,input-processor-mouse-gesture";
+        #input-processor-cells = <0>;
+        stroke-size = <150>;
+        movement-threshold = <3>;
+        gesture-cooldown-ms = <200>;
+        always-active;
+        enable-eager-mode;
+        suppress-movement;
+
+        next_tab {
+            pattern = <GESTURE_RIGHT>;
+            bindings = <&kp LC(TAB)>;
+        };
+
+        previous_tab {
+            pattern = <GESTURE_LEFT>;
+            bindings = <&kp LC(LS(TAB))>;
+        };
+
+        reopen_tab {
+            pattern = <GESTURE_UP>;
+            bindings = <&kp LC(LS(T))>;
+        };
+
+        close_tab {
+            pattern = <GESTURE_DOWN>;
+            bindings = <&kp LC(W)>;
+        };
+    };
+
+    // O長押し: macOS用デスクトップ／ウィンドウジェスチャー
+    zip_mouse_gesture_o_mac: zip_mouse_gesture_o_mac {
+        compatible = "zmk,input-processor-mouse-gesture";
+        #input-processor-cells = <0>;
+        stroke-size = <200>;
+        movement-threshold = <3>;
+        always-active;
+        enable-eager-mode;
+        suppress-movement;
+
+        desktop_right {
+            pattern = <GESTURE_RIGHT>;
+            bindings = <&kp LC(RIGHT_ARROW)>;
+        };
+
+        desktop_left {
+            pattern = <GESTURE_LEFT>;
+            bindings = <&kp LC(LEFT_ARROW)>;
+        };
+
+        mission_control {
+            pattern = <GESTURE_UP>;
+            bindings = <&kp LC(UP_ARROW)>;
+        };
+
+        app_expose {
+            pattern = <GESTURE_DOWN>;
+            bindings = <&kp LC(DOWN_ARROW)>;
+        };
+    };
+
+    // O長押し: Windows用デスクトップ／ウィンドウジェスチャー
+    zip_mouse_gesture_o_win: zip_mouse_gesture_o_win {
+        compatible = "zmk,input-processor-mouse-gesture";
+        #input-processor-cells = <0>;
+        stroke-size = <200>;
+        movement-threshold = <3>;
+        always-active;
+        enable-eager-mode;
+        suppress-movement;
+
+        desktop_right {
+            pattern = <GESTURE_RIGHT>;
+            bindings = <&kp LC(LG(RIGHT_ARROW))>;
+        };
+
+        desktop_left {
+            pattern = <GESTURE_LEFT>;
+            bindings = <&kp LC(LG(LEFT_ARROW))>;
+        };
+
+        task_view {
+            pattern = <GESTURE_UP>;
+            bindings = <&kp LG(TAB)>;
+        };
+
+        minimize_window {
+            pattern = <GESTURE_DOWN>;
+            bindings = <&kp LG(DOWN_ARROW)>;
+        };
+    };
+
+    // Layer 1: Windows用マウスジェスチャー
+    zip_mouse_gesture_win: zip_mouse_gesture_win {
+        compatible = "zmk,input-processor-mouse-gesture";
+        #input-processor-cells = <0>;
+        stroke-size = <200>;
+        movement-threshold = <3>;
+        idle-timeout-ms = <300>;
+        enable-eager-mode;
+        suppress-movement;
+
+        page_top {
+            pattern = <GESTURE_UP>;
+            bindings = <&kp LC(HOME)>;
+        };
+
+        page_bottom {
+            pattern = <GESTURE_DOWN>;
+            bindings = <&kp LC(END)>;
+        };
+
+        history_forward {
+            pattern = <GESTURE_RIGHT>;
+            bindings = <&kp LA(RIGHT_ARROW)>;
+        };
+
+        history_back {
+            pattern = <GESTURE_LEFT>;
+            bindings = <&kp LA(LEFT_ARROW)>;
+        };
+
+        new_tab {
+            pattern = <GESTURE_LEFT GESTURE_RIGHT>;
+            bindings = <&kp LC(T)>;
+        };
+
+        open_history {
+            pattern = <GESTURE_DOWN GESTURE_RIGHT>;
+            bindings = <&kp LC(H)>;
+        };
+    };
+
     trackball_listener: trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
+                           <&zip_mouse_gesture>,
                            <&zip_xy_scaler 1 1>,
                            <&zip_temp_layer AML_Layer 5000>;
 
@@ -54,6 +266,46 @@
                                <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
                                <&zip_scroll_scaler 1 25>,
                                <&zip_scroll_snap>;
+        };
+
+        o-gesture-win-layer {
+            layers = <O_Gesture_Win>;
+            input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
+                               <&zip_mouse_gesture_o_win>,
+                               <&zip_xy_scaler 1 1>,
+                               <&zip_temp_layer AML_Layer 5000>;
+        };
+
+        o-gesture-mac-layer {
+            layers = <O_Gesture_Layer>;
+            input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
+                               <&zip_mouse_gesture_o_mac>,
+                               <&zip_xy_scaler 1 1>,
+                               <&zip_temp_layer AML_Layer 5000>;
+        };
+
+        i-gesture-win-layer {
+            layers = <I_Gesture_Win>;
+            input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
+                               <&zip_mouse_gesture_i_win>,
+                               <&zip_xy_scaler 1 1>,
+                               <&zip_temp_layer AML_Layer 5000>;
+        };
+
+        i-gesture-mac-layer {
+            layers = <I_Gesture_Layer>;
+            input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
+                               <&zip_mouse_gesture_i_mac>,
+                               <&zip_xy_scaler 1 1>,
+                               <&zip_temp_layer AML_Layer 5000>;
+        };
+
+        win-gesture-layer {
+            layers = <Win_Default_Layer>;
+            input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
+                               <&zip_mouse_gesture_win>,
+                               <&zip_xy_scaler 1 1>,
+                               <&zip_temp_layer AML_Layer 5000>;
         };
     };
 };
@@ -103,6 +355,8 @@
 
 &zip_temp_layer {
     excluded-positions = <
+        7  // I
+        8  // O
         10 // command or control (Hold)
         16 // J
         17 // K
