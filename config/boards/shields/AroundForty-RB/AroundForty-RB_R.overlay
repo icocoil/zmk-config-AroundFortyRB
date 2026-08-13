@@ -23,6 +23,9 @@
 #define O_Gesture_Layer   14
 #define O_Gesture_Win     15
 
+#define GESTURE_REL_O_WIN_X 0x0A
+#define GESTURE_REL_O_WIN_Y 0x0B
+
 &default_transform {
     col-offset = <6>;
 };
@@ -85,6 +88,64 @@
 };
 
 / {
+    input_processors {
+        zip_win_pointer_mapper: zip_win_pointer_mapper {
+            compatible = "zmk,input-processor-code-mapper";
+            #input-processor-cells = <0>;
+            type = <INPUT_EV_REL>;
+            map = <INPUT_REL_X INPUT_REL_Z
+                   INPUT_REL_Y INPUT_REL_RZ>;
+        };
+
+        zip_i_gesture_mac_mapper: zip_i_gesture_mac_mapper {
+            compatible = "zmk,input-processor-code-mapper";
+            #input-processor-cells = <0>;
+            type = <INPUT_EV_REL>;
+            map = <INPUT_REL_X INPUT_REL_RX
+                   INPUT_REL_Y INPUT_REL_RY>;
+        };
+
+        zip_i_gesture_win_mapper: zip_i_gesture_win_mapper {
+            compatible = "zmk,input-processor-code-mapper";
+            #input-processor-cells = <0>;
+            type = <INPUT_EV_REL>;
+            map = <INPUT_REL_X INPUT_REL_HWHEEL
+                   INPUT_REL_Y INPUT_REL_WHEEL>;
+        };
+
+        zip_o_gesture_mac_mapper: zip_o_gesture_mac_mapper {
+            compatible = "zmk,input-processor-code-mapper";
+            #input-processor-cells = <0>;
+            type = <INPUT_EV_REL>;
+            map = <INPUT_REL_X INPUT_REL_DIAL
+                   INPUT_REL_Y INPUT_REL_MISC>;
+        };
+
+        zip_o_gesture_win_mapper: zip_o_gesture_win_mapper {
+            compatible = "zmk,input-processor-code-mapper";
+            #input-processor-cells = <0>;
+            type = <INPUT_EV_REL>;
+            map = <INPUT_REL_X GESTURE_REL_O_WIN_X
+                   INPUT_REL_Y GESTURE_REL_O_WIN_Y>;
+        };
+
+        zip_gesture_code_restore: zip_gesture_code_restore {
+            compatible = "zmk,input-processor-code-mapper";
+            #input-processor-cells = <0>;
+            type = <INPUT_EV_REL>;
+            map = <INPUT_REL_Z INPUT_REL_X
+                   INPUT_REL_RZ INPUT_REL_Y
+                   INPUT_REL_RX INPUT_REL_X
+                   INPUT_REL_RY INPUT_REL_Y
+                   INPUT_REL_HWHEEL INPUT_REL_X
+                   INPUT_REL_WHEEL INPUT_REL_Y
+                   INPUT_REL_DIAL INPUT_REL_X
+                   INPUT_REL_MISC INPUT_REL_Y
+                   GESTURE_REL_O_WIN_X INPUT_REL_X
+                   GESTURE_REL_O_WIN_Y INPUT_REL_Y>;
+        };
+    };
+
     // I長押し: タブ操作（macOS）
     zip_mouse_gesture_i_mac: zip_mouse_gesture_i_mac {
         compatible = "zmk,input-processor-mouse-gesture";
@@ -95,6 +156,8 @@
         always-active;
         enable-eager-mode;
         suppress-movement;
+        event-code-x = <INPUT_REL_RX>;
+        event-code-y = <INPUT_REL_RY>;
 
         next_tab {
             pattern = <GESTURE_RIGHT>;
@@ -127,6 +190,8 @@
         always-active;
         enable-eager-mode;
         suppress-movement;
+        event-code-x = <INPUT_REL_HWHEEL>;
+        event-code-y = <INPUT_REL_WHEEL>;
 
         next_tab {
             pattern = <GESTURE_RIGHT>;
@@ -158,6 +223,8 @@
         always-active;
         enable-eager-mode;
         suppress-movement;
+        event-code-x = <INPUT_REL_DIAL>;
+        event-code-y = <INPUT_REL_MISC>;
 
         desktop_right {
             pattern = <GESTURE_RIGHT>;
@@ -189,6 +256,8 @@
         always-active;
         enable-eager-mode;
         suppress-movement;
+        event-code-x = <GESTURE_REL_O_WIN_X>;
+        event-code-y = <GESTURE_REL_O_WIN_Y>;
 
         desktop_right {
             pattern = <GESTURE_RIGHT>;
@@ -220,6 +289,8 @@
         idle-timeout-ms = <300>;
         enable-eager-mode;
         suppress-movement;
+        event-code-x = <INPUT_REL_Z>;
+        event-code-y = <INPUT_REL_RZ>;
 
         page_top {
             pattern = <GESTURE_UP>;
@@ -257,6 +328,12 @@
         device = <&trackball>;
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
                            <&zip_mouse_gesture>,
+                           <&zip_mouse_gesture_win>,
+                           <&zip_mouse_gesture_i_mac>,
+                           <&zip_mouse_gesture_i_win>,
+                           <&zip_mouse_gesture_o_mac>,
+                           <&zip_mouse_gesture_o_win>,
+                           <&zip_gesture_code_restore>,
                            <&zip_xy_scaler 1 1>,
                            <&zip_temp_layer AML_Layer 5000>;
 
@@ -271,41 +348,36 @@
         o-gesture-win-layer {
             layers = <O_Gesture_Win>;
             input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
-                               <&zip_mouse_gesture_o_win>,
-                               <&zip_xy_scaler 1 1>,
-                               <&zip_temp_layer AML_Layer 5000>;
+                               <&zip_o_gesture_win_mapper>;
+            process-next;
         };
 
         o-gesture-mac-layer {
             layers = <O_Gesture_Layer>;
             input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
-                               <&zip_mouse_gesture_o_mac>,
-                               <&zip_xy_scaler 1 1>,
-                               <&zip_temp_layer AML_Layer 5000>;
+                               <&zip_o_gesture_mac_mapper>;
+            process-next;
         };
 
         i-gesture-win-layer {
             layers = <I_Gesture_Win>;
             input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
-                               <&zip_mouse_gesture_i_win>,
-                               <&zip_xy_scaler 1 1>,
-                               <&zip_temp_layer AML_Layer 5000>;
+                               <&zip_i_gesture_win_mapper>;
+            process-next;
         };
 
         i-gesture-mac-layer {
             layers = <I_Gesture_Layer>;
             input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
-                               <&zip_mouse_gesture_i_mac>,
-                               <&zip_xy_scaler 1 1>,
-                               <&zip_temp_layer AML_Layer 5000>;
+                               <&zip_i_gesture_mac_mapper>;
+            process-next;
         };
 
         win-gesture-layer {
             layers = <Win_Default_Layer>;
             input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
-                               <&zip_mouse_gesture_win>,
-                               <&zip_xy_scaler 1 1>,
-                               <&zip_temp_layer AML_Layer 5000>;
+                               <&zip_win_pointer_mapper>;
+            process-next;
         };
     };
 };
