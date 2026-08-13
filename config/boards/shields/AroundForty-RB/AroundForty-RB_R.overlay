@@ -90,7 +90,7 @@
         compatible = "zmk,input-processor-mouse-gesture";
         #input-processor-cells = <0>;
         stroke-size = <150>;
-        movement-threshold = <3>;
+        movement-threshold = <0>;
         gesture-cooldown-ms = <200>;
         always-active;
         enable-eager-mode;
@@ -122,7 +122,7 @@
         compatible = "zmk,input-processor-mouse-gesture";
         #input-processor-cells = <0>;
         stroke-size = <150>;
-        movement-threshold = <3>;
+        movement-threshold = <0>;
         gesture-cooldown-ms = <200>;
         always-active;
         enable-eager-mode;
@@ -154,7 +154,7 @@
         compatible = "zmk,input-processor-mouse-gesture";
         #input-processor-cells = <0>;
         stroke-size = <200>;
-        movement-threshold = <3>;
+        movement-threshold = <0>;
         always-active;
         enable-eager-mode;
         suppress-movement;
@@ -185,7 +185,7 @@
         compatible = "zmk,input-processor-mouse-gesture";
         #input-processor-cells = <0>;
         stroke-size = <200>;
-        movement-threshold = <3>;
+        movement-threshold = <0>;
         always-active;
         enable-eager-mode;
         suppress-movement;
