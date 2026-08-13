@@ -48,6 +48,11 @@
             if-layers = <1 14>;
             then-layer = <15>;
         };
+
+        l_gesture_win {
+            if-layers = <1 16>;
+            then-layer = <17>;
+        };
     };
 
     combos {
@@ -229,6 +234,17 @@
             flavor = "hold-preferred";
             hold-while-undecided;
         };
+
+        gesture_layer_mkp: gesture_layer_mkp {
+            compatible = "zmk,behavior-hold-tap";
+            label = "GESTURE_LAYER_MOUSE_TAP";
+            bindings = <&mo>, <&mkp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "hold-preferred";
+            hold-while-undecided;
+        };
     };
 
     keymap {
@@ -255,7 +271,7 @@
         AML_Layer {
             bindings = <
 &trans  &trans  &trans  &trans  &trans          &trans  &trans    &gesture_layer_kp 12 I  &gesture_layer_kp 14 O  &trans
-&trans  &trans  &trans  &trans  &trans          &trans  &mkp MB1  &mkp MB3                 &mouse_gesture_mkp 0 MB2  &trans
+&trans  &trans  &trans  &trans  &trans          &trans  &mkp MB1  &mkp MB3                 &gesture_layer_mkp 16 MB2  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
             >;
@@ -372,6 +388,24 @@
         O_Gesture_Win_Layer {
             bindings = <
 &trans  &trans  &trans  &trans  &trans          &trans  &trans  &kp LG(TAB)  &trans  &trans
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        L_Gesture_Layer {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        L_Gesture_Win_Layer {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans

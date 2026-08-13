@@ -22,9 +22,13 @@
 #define I_Gesture_Win     13
 #define O_Gesture_Layer   14
 #define O_Gesture_Win     15
+#define L_Gesture_Layer   16
+#define L_Gesture_Win     17
 
 #define GESTURE_REL_O_WIN_X 0x0A
 #define GESTURE_REL_O_WIN_Y 0x0B
+#define GESTURE_REL_L_WIN_X 0x0C
+#define GESTURE_REL_L_WIN_Y 0x0D
 
 &default_transform {
     col-offset = <6>;
@@ -48,13 +52,16 @@
     idle-reset-timeout-ms = <175>;
 };
 
-// Layer 0: macOS用マウスジェスチャー
+// L長押し: macOS用マウスジェスチャー
 &zip_mouse_gesture {
     stroke-size = <200>;
-    movement-threshold = <3>;
+    movement-threshold = <0>;
     idle-timeout-ms = <300>;
+    always-active;
     enable-eager-mode;
     suppress-movement;
+    event-code-x = <INPUT_REL_Z>;
+    event-code-y = <INPUT_REL_RZ>;
 
     page_top {
         pattern = <GESTURE_UP>;
@@ -89,12 +96,20 @@
 
 / {
     input_processors {
-        zip_win_pointer_mapper: zip_win_pointer_mapper {
+        zip_l_gesture_mac_mapper: zip_l_gesture_mac_mapper {
             compatible = "zmk,input-processor-code-mapper";
             #input-processor-cells = <0>;
             type = <INPUT_EV_REL>;
             map = <INPUT_REL_X INPUT_REL_Z
                    INPUT_REL_Y INPUT_REL_RZ>;
+        };
+
+        zip_l_gesture_win_mapper: zip_l_gesture_win_mapper {
+            compatible = "zmk,input-processor-code-mapper";
+            #input-processor-cells = <0>;
+            type = <INPUT_EV_REL>;
+            map = <INPUT_REL_X GESTURE_REL_L_WIN_X
+                   INPUT_REL_Y GESTURE_REL_L_WIN_Y>;
         };
 
         zip_i_gesture_mac_mapper: zip_i_gesture_mac_mapper {
@@ -142,7 +157,9 @@
                    INPUT_REL_DIAL INPUT_REL_X
                    INPUT_REL_MISC INPUT_REL_Y
                    GESTURE_REL_O_WIN_X INPUT_REL_X
-                   GESTURE_REL_O_WIN_Y INPUT_REL_Y>;
+                   GESTURE_REL_O_WIN_Y INPUT_REL_Y
+                   GESTURE_REL_L_WIN_X INPUT_REL_X
+                   GESTURE_REL_L_WIN_Y INPUT_REL_Y>;
         };
     };
 
@@ -280,17 +297,18 @@
         };
     };
 
-    // Layer 1: Windows用マウスジェスチャー
+    // L長押し: Windows用マウスジェスチャー
     zip_mouse_gesture_win: zip_mouse_gesture_win {
         compatible = "zmk,input-processor-mouse-gesture";
         #input-processor-cells = <0>;
         stroke-size = <200>;
-        movement-threshold = <3>;
+        movement-threshold = <0>;
         idle-timeout-ms = <300>;
+        always-active;
         enable-eager-mode;
         suppress-movement;
-        event-code-x = <INPUT_REL_Z>;
-        event-code-y = <INPUT_REL_RZ>;
+        event-code-x = <GESTURE_REL_L_WIN_X>;
+        event-code-y = <GESTURE_REL_L_WIN_Y>;
 
         page_top {
             pattern = <GESTURE_UP>;
@@ -373,10 +391,17 @@
             process-next;
         };
 
-        win-gesture-layer {
-            layers = <Win_Default_Layer>;
+        l-gesture-win-layer {
+            layers = <L_Gesture_Win>;
             input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
-                               <&zip_win_pointer_mapper>;
+                               <&zip_l_gesture_win_mapper>;
+            process-next;
+        };
+
+        l-gesture-mac-layer {
+            layers = <L_Gesture_Layer>;
+            input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
+                               <&zip_l_gesture_mac_mapper>;
             process-next;
         };
     };
